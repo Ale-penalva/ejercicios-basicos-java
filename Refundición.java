@@ -6,7 +6,6 @@ public class Refundición {
 		// TODO Auto-generated method stub
 
 
-		
 			double num1=5.85;
 			
 			int resultado=(int)Math.round(num1); //refundición
