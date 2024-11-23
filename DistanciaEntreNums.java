@@ -1,4 +1,4 @@
-package penalva.ale.ejercicios;
+package com.ejercicios;
 
 import java.util.Scanner;
 

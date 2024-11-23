@@ -1,4 +1,4 @@
-package penalva.ale.ejercicios;
+package com.ejercicios;
 
 /**
  * Programa que muestra una tabla con dos columnas: inglés y castellano.
