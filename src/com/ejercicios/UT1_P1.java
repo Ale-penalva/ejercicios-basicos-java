@@ -1,4 +1,4 @@
-package ejers_para_pract;
+package com.ejercicios;
 import java.util.Scanner;
 
 public class UT1_P1 {
