@@ -1,1 +1,12 @@
-/bin/
+# Archivos y carpetas de Eclipse
+.classpath
+.project
+.settings/
+
+# Archivos compilados de Java
+*.class
+
+# Carpetas de salida comunes
+bin/
+out/
+target/
