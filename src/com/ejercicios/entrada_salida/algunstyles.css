@@ -1,0 +1,1872 @@
+/* ====================================================================
+   0.0 - IMPORTACIÓN DE FUENTES
+==================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Electrolize&family=Inter:wght@400;500;600;700&family=Michroma&family=Rationale&family=Tomorrow:wght@400;500&display=swap');
+
+/* ====================================================================
+   1.0 - CONFIGURACIÓN GLOBAL (VARIABLES)
+==================================================================== */
+:root {
+  /* Paleta de colores */
+  --color-acento: hsl(212, 100%, 50%);
+  --color-acento-hover: hsl(212, 100%, 45%);
+  --gris-900: hsl(212, 45%, 7%);
+  --gris-800: hsl(212, 29%, 11%);
+  --gris-700: hsl(210, 10%, 23%);
+  --gris-400: hsl(210, 9%, 60%);
+  --gris-200: hsl(210, 17%, 95%);
+
+  /* Variables semánticas (mapeo de la paleta) */
+  --color-fondo: var(--gris-900);
+  --color-superficie: var(--gris-800);
+  --color-borde: var(--gris-700);
+  --color-texto-principal: var(--gris-200);
+  --color-texto-secundario: var(--gris-400);
+
+  /* Variables de tipografía */
+  --fuente-principal: 'Inter', 'Segoe UI', sans-serif;
+  --fuente-titulos: 'Tomorrow', Helvetica, sans-serif;
+  --fuente-logos: 'Michroma', sans-serif;
+
+  /* Paleta de Colores para Marcas */
+  --color-marca-apple: hsl(45, 56%, 52%); /* #D4AF37 */
+  --color-marca-samsung: hsl(217, 96%, 53%); /* #0d6efd */
+  --color-marca-beats: hsl(355, 78%, 46%); /* #dc1a28 */
+
+  /* Paleta de Colores para Etiquetas */
+  --color-etiqueta-pro: hsl(282, 39%, 59%); /* #9b59b6 */
+  --color-etiqueta-equilibrado: hsl(145, 63%, 49%); /* #2ecc71 */
+  --color-etiqueta-diseno: hsl(207, 70%, 55%); /* #3498db */
+  --color-etiqueta-popular: hsl(39, 92%, 56%); /* #f39c12 */
+  --color-etiqueta-basico: hsl(210, 8%, 65%); /* #9ea6ac */
+
+  /* Colores Funcionales (para pros y contras) */
+  --color-exito: hsl(147, 60%, 40%); /* #27ae60 */
+  --color-error: hsl(6, 66%, 52%); /* #c0392b */
+  /* --- AÑADIR ESTO A :root --- */
+
+/* Paleta de Colores para Ecosistema Beats */
+--color-beats-oscuro: hsl(356, 56%, 15%);   /* #420f12 */
+--color-beats-lila: hsl(266, 92%, 81%);     /* #a073f7 */
+--color-beats-cian: hsl(170, 100%, 50%);    /* #00ffcc */
+--color-beats-cian-oscuro: hsl(170, 100%, 6%);     /* #001f1f */
+--color-beats-morado: hsl(282, 65%, 50%);   /* #7928ca */
+--color-beats-magenta: hsl(330, 100%, 50%);  /* #ff0080 */
+}
+
+/* ====================================================================
+   2.0 - ESTILOS BASE Y RESETEO
+==================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fuente-principal);
+  color: var(--color-texto-secundario);
+  line-height: 1.7;
+
+  /* Fondo global de estrellas/nebulosa para todo el sitio */
+  background-color: #090a0f;
+  background-image: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+figure {
+  margin: 0;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--fuente-titulos);
+  color: var(--color-texto-principal);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+h1 { font-size: 2.8rem; margin-top: 2rem; }
+h2 { font-size: 2.2rem; margin-top: 3rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.2rem; }
+
+/* ====================================================================
+   3.0 - CLASES DE MAQUETACIÓN (Layout)
+==================================================================== */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+}
+
+.grid-destacado, .grid-marcas { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 2rem; 
+}
+
+.recomendaciones-grid-estatica {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+  align-items: stretch;
+}
+
+/* ====================================================================
+   4.0 - COMPONENTES GENERALES
+==================================================================== */
+
+/* 4.1 - Botones */
+.btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.btn--principal {
+  background-color: var(--color-acento);
+  color: #fff;
+  box-shadow: 0 4px 20px hsla(212, 100%, 50%, 0.25);
+}
+.btn--principal:hover {
+  background-color: var(--color-acento-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px hsla(212, 100%, 50%, 0.35);
+}
+.btn--outline {
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  color: var(--color-acento);
+  background-color: transparent;
+  border-color: var(--color-acento);
+}
+.btn--outline:hover {
+  background-color: var(--color-acento);
+  color: #fff;
+  transform: translateY(-2px);
+}
+.btn:focus-visible {
+  outline: 2px dotted var(--color-acento);
+  outline-offset: 2px;
+}
+
+/* 4.2 - Etiquetas */
+.etiqueta {
+  display: inline-block;
+  padding: 4px 12px;
+  margin: 8px 4px 8px 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 999px;
+  border: 1.5px solid;
+  background-color: hsla(0, 0%, 100%, 0.05);
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: currentColor;
+}
+.etiqueta--pro { color: var(--color-etiqueta-pro); }
+.etiqueta--equilibrado { color: var(--color-etiqueta-equilibrado); }
+.etiqueta--diseno { color: var(--color-etiqueta-diseno); }
+.etiqueta--popular { color: var(--color-etiqueta-popular); }
+.etiqueta--basico { color: var(--color-etiqueta-basico); }
+
+
+/* 4.3 - Cabecera Principal */
+.c-header {
+  background-color: hsla(210, 16%, 18%, 0.75);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid var(--color-borde);
+}
+.c-header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.c-header__title {
+  font-family: "Tomorrow", monospace;
+  font-weight: 500;
+  font-size: 1.8rem;
+  margin: 0;
+}
+.c-header__logo {
+  color: var(--color-texto-principal);
+  text-decoration: none;
+}
+.c-header__menu {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+.c-header__menu-item {
+  position: relative;
+}
+.c-header__menu-link {
+  color: var(--color-texto-secundario);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  display: block;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  border-radius: 6px;
+}
+.c-header__menu-link:hover,
+.c-header__menu-link.active {
+  color: var(--color-texto-principal);
+  background-color: hsla(0, 0%, 100%, 0.05);
+}
+.c-header__dropdown {
+  display: block;
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  min-width: 200px;
+  z-index: 1001;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.2s, top 0.2s ease;
+  padding: 0.5rem;
+}
+.c-header__menu-item--has-dropdown:hover .c-header__dropdown {
+  opacity: 0.98;
+  visibility: visible;
+  top: 100%;
+}
+.c-header__dropdown-item {
+  list-style: none;
+}
+.c-header__dropdown-link {
+  display: block;
+  padding: 0.7rem 1.2rem;
+  color: var(--color-texto-secundario);
+  text-decoration: none;
+  font-weight: 500;
+  white-space: nowrap;
+  border-radius: 4px;
+  transition: background-color 0.2s, color 0.2s;
+}
+.c-header__dropdown-link:hover {
+  background-color: var(--color-acento);
+  color: #fff;
+}
+.c-header__hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+.c-header__hamburger-bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: var(--color-texto-principal);
+  margin: 5px 0;
+  transition: all 0.3s ease-in-out;
+}
+
+/* 4.4 - Pie de Página */
+.c-footer {
+  background-color: var(--color-superficie);
+  color: var(--color-texto-secundario);
+  text-align: center;
+  padding: 3rem 1rem;
+  margin-top: 4rem;
+}
+.c-footer--no-top-margin {
+  margin-top: 0;
+}
+.c-footer a {
+  color: var(--color-texto-secundario);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.c-footer a:hover {
+  color: var(--color-acento);
+}
+.c-footer__legal {
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.c-footer__nav-separator {
+  margin: 0 0.5rem;
+}
+
+/* 4.5 - Miga de Pan */
+.c-breadcrumb {
+  font-size: 0.85rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-borde);
+}
+.c-breadcrumb__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.c-breadcrumb__item {
+  display: flex;
+  align-items: center;
+}
+.c-breadcrumb__item:not(:last-child)::after {
+  content: '>';
+  margin: 0 0.75rem;
+  color: var(--color-texto-secundario);
+}
+.c-breadcrumb__link {
+  color: var(--color-texto-secundario);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.c-breadcrumb__link:hover {
+  color: var(--color-acento);
+}
+.c-breadcrumb__current {
+  color: var(--color-texto-principal);
+  font-weight: 500;
+}
+
+/* 4.6 - Acordeón de FAQs */
+.c-faq {
+  margin-top: 4rem;
+  max-width: 1150px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.c-faq__item {
+  background: transparent;
+  border-bottom: 1px solid var(--color-borde);
+  padding: 1rem 0;
+}
+.c-faq__item:first-of-type {
+  border-top: 1px solid var(--color-borde);
+}
+.c-faq__question {
+  padding: 0.5rem 0;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--color-texto-principal);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color 0.2s ease;
+}
+.c-faq__question:hover {
+  color: var(--color-acento);
+}
+.c-faq__question::after {
+  content: '+';
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--color-texto-secundario);
+  transition: transform 0.3s ease-in-out, color 0.2s ease;
+}
+.c-faq__item[open] > .c-faq__question::after {
+  content: '−';
+  transform: rotate(180deg);
+  color: var(--color-acento);
+}
+.c-faq__answer {
+  padding: 1rem 0 0.5rem 0;
+  color: var(--color-texto-secundario);
+  line-height: 1.7;
+}
+
+/* ====================================================================
+   4.7 - Formulario de Suscripción Moderno
+==================================================================== */
+.c-suscripcion-box {
+  text-align: center;
+  background-color: var(--color-superficie);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  margin-top: 4rem;
+}
+/* El contenedor principal del formulario, con forma de píldora */
+.c-subscribe-form--modern {
+  display: flex; /* Alinea el input y el botón en una fila */
+  align-items: center; /* Centra los elementos verticalmente */
+  max-width: 500px;
+  margin: 2rem auto 0 auto;
+  padding: 0.5rem 0.75rem;
+  
+  /* Efecto de cristal y borde */
+  background-color: hsla(212, 29%, 11%, 0.4); /* --color-superficie con opacidad */
+  backdrop-filter: blur(5px);
+  border: 1px solid var(--color-borde);
+  border-radius: 999px; /* Esto le da la forma de píldora */
+  
+  /* Transición suave para el efecto de foco */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* LA MAGIA: Cuando cualquier elemento DENTRO del formulario recibe foco... */
+.c-subscribe-form--modern:focus-within {
+  /* ...todo el contenedor se ilumina */
+  border-color: var(--color-acento);
+  box-shadow: 0 0 15px hsla(212, 100%, 50%, 0.3);
+}
+
+/* El campo de texto es ahora transparente y sin bordes */
+.c-subscribe-form__input--modern {
+  flex-grow: 1; /* Ocupa todo el espacio disponible */
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: var(--color-texto-principal);
+  
+  /* Lo hacemos "invisible" para que se funda con el contenedor */
+  background: transparent;
+  border: none;
+  outline: none; /* Quitamos el borde que aparece al hacer clic */
+}
+
+.c-subscribe-form__input--modern::placeholder {
+  color: var(--color-texto-secundario);
+}
+
+/* El botón ahora es parte de la píldora */
+.c-subscribe-form__button--modern {
+  /* Usamos las variables de nuestros botones ya definidos */
+  background-color: var(--color-acento);
+  color: #fff;
+  font-weight: 600;
+  
+  /* Adaptamos el padding y borde para que quepa bien */
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  
+  transition: background-color 0.3s ease;
+}
+
+.c-subscribe-form__button--modern:hover {
+  background-color: var(--color-acento-hover);
+}
+
+/* ====================================================================
+   5.0 - ESTILOS DE PÁGINA: INICIO (PORTADA)
+==================================================================== */
+
+/* 5.1 - Hero Principal */
+/* Reemplaza la regla .hero en la sección 5.1 con esta */
+.hero {
+  height: 100vh; /* <-- HACE QUE OCUPE TODA LA ALTURA DE LA PANTALLA */
+  position: relative;
+  text-align: center;
+  background-image: url("../images/imagenesHero/milad-fakurian-58Z17lnVS4U-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem; 
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    radial-gradient(ellipse at center, hsla(213, 27%, 9%, 0.4), hsla(213, 27%, 9%, 0.7)),
+    linear-gradient(to top, #090a0f 10%, transparent 40%);  
+}
+.hero .container { /* Aplicamos al contenedor genérico dentro del hero */
+  position: relative;
+  z-index: 2;
+}
+.hero h1, .hero p {
+  text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+}
+.hero p {
+  font-size: 1.45rem;
+  max-width: 750px;
+  margin: 0 auto 2rem;
+}
+
+/* 5.2 - Sección de Filosofía / Promesas
+   NOTA: Se ha eliminado la versión duplicada y se deja la más avanzada.
+==================================================================== */
+.c-intro-container {
+  padding: 5rem 0;
+  text-align: center;
+}
+.c-intro-subtitle {
+  max-width: 650px;
+  margin: -1rem auto 3.5rem auto;
+  font-size: 1.1rem;
+  color: var(--color-texto-secundario);
+}
+.c-intro-promises {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.c-intro-promise-item {
+  flex: 1;
+  padding: 1.5rem;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+.c-intro-promise-item:hover {
+  transform: translateY(-8px);
+}
+.c-intro-promise-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -1.25rem;
+  top: 15%;
+  bottom: 15%;
+  width: 1px;
+  background-color: var(--color-borde);
+}
+.c-intro-promise-item i {
+  font-size: 2.5rem;
+  color: var(--color-acento);
+  margin-bottom: 1.5rem;
+  transition: color 0.3s ease;
+}
+.c-intro-promise-item:hover i {
+  color: #fff;
+}
+.c-intro-promise-item h3 {
+  font-size: 1.3rem;
+  color: var(--color-texto-principal);
+  margin-bottom: 0.75rem;
+}
+.c-intro-promise-item p {
+  color: var(--color-texto-secundario);
+  line-height: 1.6;
+}
+
+/* ====================================================================
+   5.3 - Tríptico de Marcas (Flip Cards) - VERSIÓN FINAL
+==================================================================== */
+.c-triptych-wrapper {
+  padding: 4rem 0;
+  text-align: center;
+}
+.c-triptych-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; 
+  max-width: 1200px;
+  margin: 2rem auto 0 auto;
+  gap: 1.5rem;
+  perspective: 1500px;
+}
+.c-flip-card {
+  flex: 1;
+  min-width: 300px;
+  height: 400px;
+  background-color: transparent;
+  cursor: pointer;
+}
+.c-flip-card__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s;
+  transform-style: preserve-3d;
+}
+/* Esta clase la añade JavaScript al hacer clic */
+.c-flip-card.is-flipped .c-flip-card__inner {
+  transform: rotateY(180deg);
+}
+
+.c-flip-card__front,
+.c-flip-card__back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 16px;
+  border: 1px solid var(--color-borde);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.c-flip-card__front {
+  justify-content: center;
+  background-color: var(--color-superficie);
+  gap: 1rem;
+}
+.c-flip-card__front img { 
+  height: 50px; 
+  filter: invert(1); 
+}
+.c-flip-card__front p { 
+  color: white; 
+  font-family: var(--fuente-logos); 
+  font-size: 1.8rem; 
+  margin: 0; 
+}
+
+.c-flip-card__back {
+  justify-content: space-between;
+  transform: rotateY(180deg);
+}
+.c-flip-card__back-title {
+  font-family: var(--fuente-logos);
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin: 0;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+.c-flip-card__category-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 85%;
+  min-height: 160px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.c-flip-card__category-list a {
+  display: block;
+  padding: 0.8rem 0;
+  color: var(--color-texto-secundario);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+.c-flip-card__category-list a:hover {
+  color: #fff;
+  background-color: hsla(0, 0%, 100%, 0.05);
+}
+
+/* --- Estilos por marca usando CLASES --- */
+
+/* Hover para la cara FRONTAL y brillo para la cara TRASERA (cuando está girada) */
+.c-flip-card--apple:hover .c-flip-card__front,
+.c-flip-card--apple.is-flipped .c-flip-card__back {
+  border-color: var(--color-marca-apple);
+  box-shadow: 0 0 30px hsla(45, 56%, 52%, 0.4);
+}
+.c-flip-card--samsung:hover .c-flip-card__front,
+.c-flip-card--samsung.is-flipped .c-flip-card__back {
+  border-color: var(--color-marca-samsung);
+  box-shadow: 0 0 30px hsla(217, 96%, 53%, 0.4);
+}
+.c-flip-card--beats:hover .c-flip-card__front,
+.c-flip-card--beats.is-flipped .c-flip-card__back {
+  border-color: var(--color-marca-beats);
+  box-shadow: 0 0 30px hsla(355, 78%, 46%, 0.4);
+}
+
+/* Fondo de la cara trasera */
+.c-flip-card--apple .c-flip-card__back { background: radial-gradient(circle, hsla(45, 56%, 52%, 0.1) 0%, var(--color-superficie) 70%); }
+.c-flip-card--samsung .c-flip-card__back { background: radial-gradient(circle, hsla(217, 96%, 53%, 0.1) 0%, var(--color-superficie) 70%); }
+.c-flip-card--beats .c-flip-card__back { background: radial-gradient(circle, hsla(355, 78%, 46%, 0.1) 0%, var(--color-superficie) 70%); }
+
+/* Título de la cara trasera */
+.c-flip-card--apple .c-flip-card__back-title { background-image: linear-gradient(45deg, #ffffff, var(--color-marca-apple)); text-shadow: 0 0 20px hsla(45, 56%, 52%, 0.5); }
+.c-flip-card--samsung .c-flip-card__back-title { background-image: linear-gradient(45deg, #ffffff, var(--color-marca-samsung)); text-shadow: 0 0 20px hsla(217, 96%, 53%, 0.6); }
+.c-flip-card--beats .c-flip-card__back-title { background-image: linear-gradient(45deg, #ffffff, var(--color-marca-beats)); text-shadow: 0 0 20px hsla(355, 78%, 46%, 0.6); }
+/* ====================================================================
+   6.0 - ESTILOS DE PÁGINA: COMPARATIVAS
+==================================================================== */
+
+/* 6.1 - Componente de Título de Página */
+.page-intro { 
+  text-align: center; 
+  padding: 2rem 0; 
+  margin-bottom: 2rem; 
+  border-bottom: 1px solid var(--color-borde); 
+}
+.page-intro h1 {
+  font-family: var(--fuente-titulos);
+  font-weight: 400;
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+/* 6.2 - Asistente de Búsqueda (Funnel) */
+.c-funnel-container {
+  padding: 3rem 0;
+}
+.c-funnel-choices {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+.c-funnel-choice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  border: 2px solid var(--color-borde);
+  color: var(--color-texto-secundario);
+  padding: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  min-width: 120px;
+  transition: all 0.2s ease-in-out;
+}
+.c-funnel-choice:hover {
+  color: var(--color-texto-principal);
+  border-color: var(--color-acento);
+  transform: translateY(-5px);
+}
+.c-funnel-choice.active {
+  color: #fff;
+  background-color: var(--color-acento);
+  border-color: var(--color-acento);
+}
+.c-funnel-choice__icon {
+  font-size: 2.5rem;
+}
+.c-funnel-choice__text {
+  font-weight: 600;
+}
+/* La lógica de mostrar/ocultar resultados */
+.c-funnel-results .c-info-card {
+  display: none;
+}
+.c-funnel-results .c-info-card.visible {
+  display: flex;
+  animation: cardFadeIn 0.4s ease-out;
+}
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* ====================================================================
+   7.0 - ESTILOS: PÁGINA ECOSISTEMA APPLE
+   Contiene todos los componentes y estilos específicos para esta página.
+==================================================================== */
+
+/* 7.1 - Títulos Específicos de Apple
+==================================================================== */
+
+/**
+ * .c-hero-title--apple
+ * Modificador para el título principal de la página de Apple.
+ * Le da un color y brillo dorado característico de la marca.
+ */
+.c-hero-title--apple {
+  font-family: var(--fuente-logos);
+  font-size: 4rem;
+  font-weight: 700;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  /* MEJORADO: Usamos la variable de color de la marca */
+  background-image: linear-gradient(45deg, #ffffff, var(--color-marca-apple));
+  text-shadow: 0 0 25px hsla(45, 56%, 52%, 0.5); /* Usamos HSLA para consistencia */
+}
+
+/**
+ * .c-titulo-seccion--con-lineas
+ * Modificador para un título de sección con líneas decorativas a los lados.
+ * Se ha creado a partir de un estilo que era específico de Apple para hacerlo reutilizable.
+ */
+.c-titulo-seccion--con-lineas {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 2.8rem; /* Tamaño más prominente */
+  padding-bottom: 25px;
+  color: var(--gris-200);
+  text-shadow: 0 0 10px hsla(0, 0%, 100%, 0.1);
+  margin: 4rem 0 3rem 0;
+}
+
+.c-titulo-seccion--con-lineas::before,
+.c-titulo-seccion--con-lineas::after {
+  content: '';
+  flex-grow: 1; /* Las líneas ocupan el espacio sobrante */
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-borde), transparent);
+}
+
+
+/* 7.2 - Sección de Pilares de Apple
+   NOTA: Se ha eliminado la versión duplicada y se deja únicamente esta,
+   que es la más avanzada y con el efecto de foco de luz.
+==================================================================== */
+.c-pillars-container {
+  padding: 3rem 0;
+}
+
+.c-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 2rem auto 0 auto;
+}
+
+.c-pillar-card {
+  background-color: hsla(0, 0%, 100%, 0.03);
+  border: 1px solid var(--color-borde);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  position: relative; 
+  overflow: hidden; /* Oculta el brillo que se sale de la tarjeta */
+  transition: transform 0.4s ease, border-color 0.4s ease;
+}
+
+/* * Efecto Foco de Luz (requiere JavaScript)
+ * NOTA: Este efecto necesita JS para leer la posición del ratón (X, Y)
+ * y pasarla a las variables CSS --mouse-x y --mouse-y.
+ */
+.c-pillar-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  /* MEJORADO: El brillo ahora usa el color de la marca para más consistencia */
+  background: radial-gradient(
+    circle at var(--mouse-x) var(--mouse-y), 
+    hsla(45, 56%, 52%, 0.15) 0%, 
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* --- Estilos al pasar el ratón (Hover) --- */
+
+.c-pillar-card:hover {
+  transform: translateY(-8px);
+  /* MEJORADO: El borde usa el color de la marca en lugar del color de acento genérico */
+  border-color: var(--color-marca-apple);
+}
+
+.c-pillar-card:hover::before {
+  opacity: 1; /* Hacemos visible el foco de luz */
+}
+
+/* El icono y el título también usan el color de la marca */
+.c-pillar-card:hover .c-pillar-card__icon,
+.c-pillar-card:hover h3 {
+  color: var(--color-marca-apple);
+}
+
+.c-pillar-card__icon, 
+.c-pillar-card h3 {
+  color: var(--color-texto-principal);
+  transition: color 0.4s ease;
+  position: relative; /* Asegura que estén por encima del foco de luz */
+  z-index: 2;
+}
+
+.c-pillar-card__icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 1.5rem;
+}
+
+.c-pillar-card h3 {
+  font-family: var(--fuente-logos);
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.c-pillar-card p {
+  color: var(--color-texto-secundario);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  position: relative; /* Asegura que esté por encima del foco de luz */
+  z-index: 2;
+} 
+
+/* ====================================================================
+   8.0 - ESTILOS: PÁGINA ECOSISTEMA BEATS
+==================================================================== */
+
+/* 8.1 - Componentes de Título y Divisores
+==================================================================== */
+
+/**
+ * .c-hero-title--beats
+ * Modificador para el título principal de la página de Beats.
+ */
+.c-hero-title--beats {
+  font-family: var(--fuente-logos);
+  font-size: 4rem;
+  font-weight: 700;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  /* MEJORADO: Usamos la variable de color de la marca */
+  background-image: linear-gradient(45deg, #ffffff, var(--color-marca-beats));
+  text-shadow: 0 0 25px hsla(355, 78%, 46%, 0.6);
+}
+
+/**
+ * .c-divider
+ * Un divisor decorativo genérico para separar secciones.
+ */
+.c-divider {
+  border: 0;
+  height: 1px;
+  opacity: 0.5;
+  margin: 4rem auto;
+  width: 60%;
+}
+
+/**
+ * .c-divider--beats
+ * Modificador que le da al divisor el color de la marca Beats.
+ */
+.c-divider--beats {
+  background: linear-gradient(to right, transparent, var(--color-marca-beats) 50%, transparent);
+}
+
+
+/* 8.2 - Ecualizador Animado
+   NOTA: Componente complejo con animaciones y múltiples colores.
+   MEJORADO: Todos los colores fijos han sido reemplazados por variables.
+==================================================================== */
+.c-equalizer-wrapper {
+  padding: 4rem 0;
+}
+
+.c-equalizer-grid {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* Las barras crecen desde abajo */
+  gap: 2rem;
+  height: 300px;
+}
+
+.c-bar {
+  position: relative;
+  width: 80px;
+  height: 40%;
+  border-radius: 8px;
+  background: linear-gradient(to top, #000, #111);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform 0.3s;
+  box-shadow: inset 0 0 10px hsla(0, 0%, 100%, 0.1);
+  animation: bounce 1.5s ease-in-out infinite;
+}
+
+.c-bar span {
+  writing-mode: vertical-rl; /* Escribe el texto en vertical */
+  transform: rotate(180deg);
+  color: var(--color-beats-lila);
+  font-family: var(--fuente-logos, monospace);
+  font-size: 1.1rem;
+  padding: 0.5rem 0;
+  pointer-events: none; /* El texto no interfiere con el hover de la barra */
+}
+
+/* Modificadores para cada barra, ahora con variables */
+.c-bar--1 { 
+  animation-delay: 0s; 
+  background: radial-gradient(circle at 50% 50%, var(--color-marca-beats), #000); 
+  box-shadow: 0 0 12px var(--color-marca-beats); 
+}
+
+.c-bar--2 {
+  background: repeating-linear-gradient(
+    to top,
+    #111, #111 10px, 
+    var(--color-beats-oscuro) 10px, 
+    var(--color-beats-oscuro) 20px
+  );
+  border: 1px solid var(--color-borde);
+}
+.c-bar--2:hover {
+  background: repeating-linear-gradient(
+    to top,
+    var(--color-beats-cian) 0px,
+    var(--color-beats-cian) 6px,
+    var(--color-beats-cian-oscuro) 6px,
+    var(--color-beats-cian-oscuro) 12px
+  );
+}
+
+.c-bar--3 { 
+  animation-delay: 0.6s; 
+  background: linear-gradient(to top, var(--color-beats-morado), var(--color-beats-magenta)); 
+}
+.c-bar--4 { 
+  animation-delay: 0.9s; 
+  background: linear-gradient(to top, var(--color-marca-beats), var(--color-beats-oscuro)); 
+}
+.c-bar--5 { 
+  animation-delay: 1.2s; 
+  background: #111; 
+  box-shadow: inset 0 -10px 20px var(--color-marca-beats); 
+}
+
+
+/* Animación de subida y bajada para el ecualizador */
+@keyframes bounce {
+  0%, 100% { height: 40%; }
+  50% { height: 90%; }
+}
+
+/* Efecto al pasar el ratón por encima de cualquier barra */
+.c-bar:hover {
+  transform: scaleY(1.1);
+  box-shadow: 0 0 20px var(--color-marca-beats), 0 0 30px var(--color-beats-magenta);
+}
+/* ====================================================================
+   9.0 - ESTILOS: PÁGINA ECOSISTEMA SAMSUNG
+==================================================================== */
+
+/* 9.1 - Títulos y Divisores de Samsung
+==================================================================== */
+
+/**
+ * .c-hero-title--samsung
+ * Modificador para el título principal de la página de Samsung.
+ */
+.c-hero-title--samsung {
+  font-family: var(--fuente-logos);
+  font-size: 4rem;
+  font-weight: 700;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  /* MEJORADO: Usamos la variable de color de la marca */
+  background-image: linear-gradient(45deg, #ffffff, var(--color-marca-samsung));
+  text-shadow: 0 0 25px hsla(217, 96%, 53%, 0.5);
+}
+
+/**
+ * .c-divider--samsung
+ * Modificador que le da al divisor el color de la marca Samsung.
+ */
+.c-divider--samsung {
+  /* La clase base .c-divider ya está definida en la sección de Beats */
+  background: linear-gradient(to right, transparent, var(--color-marca-samsung) 50%, transparent);
+}
+
+
+/* 9.2 - Animación Cinética y de Escáner
+   NOTA: Estos componentes dependen de JavaScript para funcionar.
+==================================================================== */
+.c-scan-animation-container {
+  padding: 10vh 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden; /* Evita que la línea del escáner se vea fuera */
+}
+
+.c-scan-animation-container h3 {
+  font-size: 3.5rem;
+  font-family: var(--fuente-logos);
+  color: var(--color-texto-principal);
+  margin: 0.5rem 0;
+}
+
+/* Estilo de la línea del escáner animada */
+.c-scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--color-marca-samsung);
+  box-shadow: 0 0 15px 3px var(--color-marca-samsung);
+  /* La animación la controla JavaScript */
+}
+
+/**
+ * REFACTORIZADO: El ID #samsung-grid-title se ha convertido en una clase
+ * para seguir las buenas prácticas de CSS.
+ */
+.c-samsung-grid-title {
+  text-align: center;
+  margin-bottom: 5rem;
+  margin-top: 0;
+  opacity: 0; /* Inicialmente oculto, GSAP (JS) lo anima */
+  font-family: var(--fuente-logos);
+  font-size: 3.5rem;
+  font-weight: 700;
+  background: linear-gradient(45deg, #ffffff, var(--color-marca-samsung));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 25px hsla(217, 96%, 53%, 0.5);
+}
+
+.c-final-title-samsung {
+  font-family: var(--fuente-logos);
+  font-size: 2.7rem;
+  text-align: center;
+  font-weight: 500;
+  letter-spacing: 0.14rem;
+  background: linear-gradient(180deg, #E0E0E0, #a9d7ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px hsla(217, 96%, 53%, 0.4);
+  position: absolute;
+  opacity: 0; /* Controlado por JavaScript */
+}
+
+/* 9.3 - Tarjetas Tipográficas con Barrido de Luz
+==================================================================== */
+.c-typographic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.c-typographic-card {
+  background-color: hsla(213, 22%, 15%, 0.15); /* Color de fondo sutil */
+  border: 1px solid hsla(0, 0%, 100%, 0.1);
+  border-radius: 16px;
+  height: 250px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.c-typographic-card span {
+  font-family: var(--fuente-logos);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1px hsla(0, 0%, 100%, 0.4); /* Texto delineado */
+  transition: color 0.4s ease-out;
+}
+
+/* La franja de luz que barre la tarjeta */
+.c-typographic-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(110deg, transparent 30%, var(--color-marca-samsung) 50%, transparent 70%);
+  transform: translateX(-100%); /* Posición inicial fuera */
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.c-typographic-card:hover {
+  border-color: var(--color-marca-samsung);
+}
+.c-typographic-card:hover::before {
+  transform: translateX(100%); /* La luz se desplaza */
+}
+.c-typographic-card:hover span {
+  color: white; /* El texto se rellena */
+  transition-delay: 0.1s;
+}
+
+
+/* 9.4 - Rejilla de Cristal Iluminado (Glassmorphism)
+==================================================================== */
+.c-glass-grid-wrapper {
+  padding: 3rem 0;
+}
+.c-glass-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+.c-glass-card {
+  height: 350px;
+  border-radius: 16px;
+  text-decoration: none;
+  color: var(--color-texto-principal);
+  background: hsla(213, 22%, 15%, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid hsla(0, 0%, 100%, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.c-glass-card:hover {
+  border-color: var(--color-marca-samsung);
+}
+
+/* Efecto Foco de Luz */
+.c-glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(
+    circle at var(--mouse-x) var(--mouse-y), 
+    hsla(217, 96%, 53%, 0.2) 0%, /* MEJORADO: Brillo azul de Samsung */
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.c-glass-card:hover::before {
+  opacity: 1;
+}
+
+.c-glass-card img {
+  max-height: 60%;
+  max-width: 80%;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.4s ease;
+}
+.c-glass-card:hover img {
+  transform: scale(1.05);
+}
+
+.c-glass-card span {
+  font-family: var(--fuente-logos);
+  font-size: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* ====================================================================
+   10.0 - UTILIDADES Y EFECTOS GLOBALES
+==================================================================== */
+
+/* 10.1 - Scrollbars Personalizadas
+   Estilos para las barras de desplazamiento horizontales.
+==================================================================== */
+/* Para navegadores Webkit (Chrome, Safari, Edge) */
+.comparador-columnas::-webkit-scrollbar { 
+  height: 12px; 
+}
+.comparador-columnas::-webkit-scrollbar-track { 
+  background: var(--color-fondo); 
+  border-radius: 10px; 
+}
+.comparador-columnas::-webkit-scrollbar-thumb { 
+  background-color: var(--color-borde); 
+  border-radius: 10px; 
+  border: 3px solid var(--color-fondo); 
+}
+
+/* Para Firefox */
+.comparador-columnas {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-borde) var(--color-fondo);
+}
+
+/* 10.2 - Animaciones Genéricas
+   NOTA: Requieren JavaScript para añadir la clase '.visible' al hacer scroll.
+==================================================================== */
+.seccion-animada {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.seccion-animada.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeInRow {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animar-filas tbody tr {
+  animation: fadeInRow 0.5s ease-out forwards;
+}
+
+/* 10.3 - Efecto de Fondo (Blobs)
+   Un fondo decorativo con manchas de color que se puede usar en algunas páginas.
+==================================================================== */
+.blob-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1; /* Se asegura de que esté detrás de todo el contenido */
+  overflow: hidden; /* Evita que los blobs generen scrollbars */
+}
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.15;
+  filter: blur(100px); /* El efecto de desenfoque que los convierte en manchas */
+  /* La animación se puede añadir aquí si se desea */
+}
+
+/* MEJORADO: Usamos las variables de color de nuestra paleta */
+.blob1 { width: 500px; height: 500px; background: var(--color-acento); top: -150px; left: -150px; }
+.blob2 { width: 400px; height: 400px; background: var(--color-marca-apple); bottom: -100px; right: -100px; }
+.blob3 { width: 300px; height: 300px; background: var(--color-marca-beats); top: 50%; left: 40%; }
+.blob4 { width: 500px; height: 200px; background: var(--color-beats-magenta); bottom: 170px; left: 100px; }
+
+/* ====================================================================
+   11.0 - MISCELÁNEA Y COMPONENTES RESTANTES
+   Componentes específicos que no pertenecen a una categoría anterior.
+==================================================================== */
+
+/* 11.1 - Rejilla con Efecto "Spotlight"
+   NOTA: Requiere JavaScript para el efecto de atenuar las tarjetas
+   y resaltar solo la que tiene el ratón encima.
+==================================================================== */
+.c-spotlight-wrapper {
+  padding: 3rem 0;
+  margin-top: 2rem;
+}
+
+.c-spotlight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 2rem auto 0 auto;
+}
+
+/* El contenedor del grid necesita un hover para atenuar los hijos */
+.c-spotlight-grid:hover .c-spotlight-card {
+  opacity: 0.3;
+}
+
+.c-spotlight-card {
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  text-decoration: none;
+  color: var(--color-texto-principal);
+  
+  /* Estado por defecto: ligeramente atenuado */
+  opacity: 0.7;
+  transform: scale(0.98);
+  transition: all 0.3s ease-in-out;
+}
+
+/* La tarjeta con hover se resalta por completo */
+.c-spotlight-card:hover {
+  opacity: 1;
+  transform: scale(1.05);
+  border-color: var(--color-acento);
+  box-shadow: 0 0 30px hsla(212, 100%, 50%, 0.3);
+}
+
+.c-spotlight-card__icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.c-spotlight-card__title {
+  font-family: var(--fuente-logos);
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+/* 11.2 - Rejilla con Distorsión Líquida
+   NOTA: Este es un componente muy avanzado que requiere una librería
+   de JavaScript (como three.js o similar) para generar el efecto en el <canvas>.
+==================================================================== */
+.c-liquid-grid-wrapper {
+  padding: 3rem 0;
+  margin-top: 2rem;
+}
+
+.c-liquid-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 2rem auto 0 auto;
+}
+
+.c-liquid-item {
+  position: relative;
+  height: 350px;
+  text-decoration: none;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid var(--color-borde);
+  background-color: #000; /* Fondo de respaldo para el canvas */
+}
+
+.c-liquid-item canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.c-liquid-item p {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  font-family: var(--fuente-logos);
+  font-size: 1.8rem;
+  color: #fff;
+  margin: 0;
+  z-index: 2; /* Se asegura de que esté por encima del canvas */
+}
+
+/* 11.3 - Sección de Duelo de Productos
+==================================================================== */
+.c-duel-container {
+  padding: 4rem 0;
+}
+
+.c-duel-grid {
+  display: grid;
+  /* Tres columnas: tarjeta, separador 'VS', tarjeta */
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.c-duel-card {
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.c-duel-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px -10px hsla(212, 100%, 50%, 0.2);
+}
+
+.c-duel-card__image {
+  max-height: 200px;
+  margin-bottom: 1.5rem;
+}
+
+.c-duel-card__title {
+  font-family: var(--fuente-titulos);
+  font-size: 1.8rem;
+  margin: 0 0 1rem 0;
+}
+
+.c-duel-card__features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+  color: var(--color-texto-secundario);
+}
+
+.c-duel-card__features li {
+  margin-bottom: 0.5rem;
+}
+
+.c-duel-separator {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-borde);
+  transform: skewX(-10deg);
+}
+
+
+/* 11.4 - Sección "Kit Tecnológico"
+==================================================================== */
+.c-kit-container {
+  background-color: var(--color-superficie);
+  border-radius: 24px;
+  padding: 3rem 2rem;
+  margin-top: 4rem;
+  border: 1px solid var(--color-borde);
+  text-align: center;
+}
+
+.c-kit-subtitle {
+  max-width: 500px;
+  margin: -1rem auto 2.5rem auto;
+  color: var(--color-texto-secundario);
+}
+
+.c-kit-selectors {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.c-kit-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: transparent;
+  border: 1px solid var(--color-borde);
+  color: var(--color-texto-secundario);
+  padding: 0.8rem 1.5rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.c-kit-selector:hover {
+  background-color: var(--color-acento-hover);
+  color: #fff;
+  border-color: var(--color-acento-hover);
+}
+
+.c-kit-selector.active {
+  background-color: var(--color-acento);
+  color: #fff;
+  border-color: var(--color-acento);
+}
+
+.c-kit-selector__icon {
+  font-size: 1.2rem;
+}
+
+.c-kit-display {
+  position: relative;
+  min-height: 150px;
+}
+
+/* NOTA: Requiere JS para cambiar la clase .active entre los sets */
+.c-kit-set {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+}
+
+.c-kit-set.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.c-kit-product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.c-kit-product img {
+  height: 100px;
+  object-fit: contain;
+}
+
+.c-kit-product span {
+  font-weight: 600;
+  color: var(--color-texto-principal);
+}
+
+
+/* 11.5 - Easter Egg: Código Konami
+==================================================================== */
+/* NOTA: Requiere JS para detectar la secuencia y añadir la clase al body */
+body.konami-activated {
+  filter: invert(1) hue-rotate(180deg);
+  background-color: #161b22;
+  transition: filter 0.5s ease-in-out;
+}
+body.konami-activated .c-header,
+body.konami-activated .c-info-card,
+body.konami-activated .c-showcase-card,
+body.konami-activated .c-duel-card,
+body.konami-activated .c-kit-container {
+  box-shadow: 0 0 25px 5px hsla(212, 100%, 50%, 0.7);
+}
+
+
+/* 11.6 - Componentes Legacy (Sin Refactorizar)
+   Se conservan por si están en uso, pero se recomienda actualizarlos.
+==================================================================== */
+.destacado {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.destacado h2 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 3rem;
+}
+
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  color: var(--color-texto-principal);
+}
+.feature-card .icon-feature {
+  font-size: 2.5rem;
+  /* MEJORADO: Usando variable en lugar de color fijo */
+  color: var(--color-exito); 
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
+}
+.feature-card:hover .icon-feature {
+  color: var(--color-acento);
+}
+
+/* ====================================================================
+   12.0 - MEDIA QUERIES (DISEÑO RESPONSIVE)
+==================================================================== */
+
+/* --- Estilos para Móviles (hasta 768px) --- */
+@media (max-width: 767.98px) {
+  :root {
+    /* Reducimos ligeramente el tamaño de fuente base en móviles */
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 0 1.5rem;
+  }
+  
+  .hero h1 { font-size: 2.2rem; }
+  .hero p { font-size: 1.1rem; }
+
+  /* Todas las rejillas se convierten en una sola columna */
+  .grid-destacado, 
+  .grid-marcas,
+  .recomendaciones-grid-estatica,
+  .guides-list-grid.two-columns {
+    grid-template-columns: 1fr;
+  }
+
+  /* La tarjeta de producto se apila verticalmente */
+  .c-product-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .c-product-card__contenido,
+  .c-product-card__boton {
+    align-self: center;
+  }
+  
+  /* Secciones de guías y comparativas a una columna */
+  .c-guide-section--split,
+  .c-versus-grid {
+    grid-template-columns: 1fr;
+  }
+  .c-guide-section__title {
+    position: static; /* Quitamos el 'sticky' en móvil */
+  }
+
+  /**
+   * CORREGIDO: Tabla comparativa responsive.
+   * Se ha cambiado el selector de ID a una clase.
+   * Recuerda cambiar #tabla-comparativa-dinamica por class="c-dynamic-table" en tu HTML.
+   */
+  .c-dynamic-table {
+    border: none;
+  }
+  .c-dynamic-table thead {
+    display: none; /* Ocultamos la cabecera en móvil */
+  }
+  .c-dynamic-table tr {
+    display: block;
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+  .c-dynamic-table td {
+    display: block;
+    border: none;
+    border-bottom: 1px solid var(--color-borde);
+    padding: 0.75rem 1rem;
+    text-align: right; /* Alineamos el contenido a la derecha */
+  }
+  .c-dynamic-table tr:last-child {
+    margin-bottom: 0;
+  }
+  .c-dynamic-table td:last-child {
+    border-bottom: none;
+  }
+  /* La primera celda (la característica) se convierte en un título */
+  .c-dynamic-table td:first-child {
+    background-color: var(--color-superficie);
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: center;
+  }
+  /* Usamos pseudo-elementos para añadir los nombres de los modelos */
+  .c-dynamic-table td::before {
+    content: attr(data-label); /* Usamos el atributo data-label del HTML */
+    float: left; /* Lo alineamos a la izquierda */
+    font-weight: bold;
+    color: var(--color-texto-secundario);
+    margin-right: 0.5rem;
+  }
+}
+
+/* --- Estilos para Tablets y Menú Hamburguesa (hasta 992px) --- */
+@media (max-width: 991.98px) {
+  /* Mostramos el icono de la hamburguesa */
+  .c-header__hamburger {
+    display: block;
+  }
+
+  /* Ocultamos la navegación de escritorio */
+  .c-header__nav {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    max-width: 90vw;
+    height: 100vh;
+    /* MEJORADO: El menú ahora respeta el tema oscuro */
+    background-color: var(--color-superficie);
+    border-left: 1px solid var(--color-borde);
+    transform: translateX(100%); /* Oculto fuera de la pantalla */
+    transition: transform 0.3s ease-in-out;
+    padding-top: 5rem;
+    z-index: 999;
+  }
+
+  /* Cuando el menú está abierto (clase añadida con JS al <body>) */
+  body.nav-open .c-header__nav {
+    transform: translateX(0); /* Mostramos el menú */
+  }
+  body.nav-open .c-header__hamburger-bar {
+    /* Pequeño detalle: las barras cambian de color para que se vean sobre el menú */
+    background-color: var(--color-texto-principal);
+  }
+
+  /* Adaptamos el menú a una lista vertical */
+  .c-header__menu {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .c-header__menu-item {
+    width: 100%;
+  }
+  .c-header__menu-link {
+    padding: 1rem 1.5rem;
+    width: 100%;
+    border-bottom: 1px solid var(--color-borde);
+    /* MEJORADO: Color de texto correcto para el tema oscuro */
+    color: var(--color-texto-secundario);
+    font-weight: 600;
+  }
+  .c-header__menu-link:hover {
+    color: var(--color-texto-principal);
+    background-color: hsla(0, 0%, 100%, 0.05);
+  }
+  
+  /* Adaptación del menú desplegable (dropdown) para móvil */
+  .c-header__dropdown {
+    position: static;
+    display: none; /* Oculto por defecto */
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    background-color: var(--color-fondo);
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+  }
+  /* JS añadirá esta clase para mostrar el submenú */
+  .c-header__menu-item.submenu-open > .c-header__dropdown {
+    display: block;
+  }
+  .c-header__dropdown-link {
+    color: var(--color-texto-secundario);
+    padding-left: 2.5rem; /* Indentación para indicar que es un submenú */
+  }
+}
+
+/* --- Estilos para pantallas muy pequeñas (hasta 375px) --- */
+@media (max-width: 375px) {
+  .c-ecosystem-block__header h2 {
+    font-size: 2rem;
+    letter-spacing: 0.05rem;
+  }
+}
